@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}My Dashboard - Car Rental{% endblock %}
+
+{% block content %}
+    <h2>My Bookings</h2>
+    {% if bookings %}
+        <div class="dashboard-bookings">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Car Name</th>
+                        <th>Pickup Date</th>
+                        <th>Return Date</th>
+                        <th>Total Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.car_name }}</td>
+                            <td>{{ booking.pickup_date.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ booking.return_date.strftime('%Y-%m-%d') }}</td>
+                            <td>₹{{ "%.2f"|format(booking.total_price) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>You have not made any bookings yet. <a href="{{ url_for('cars') }}">Rent a car</a> today!</p>
+    {% endif %}
+{% endblock %}

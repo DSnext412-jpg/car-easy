@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ car.name }} - Car Details{% endblock %}
+
+{% block content %}
+    <div class="car-details-container">
+        <div class="car-details-image">
+            <img src="{{ url_for('static', filename=car.image) }}" alt="{{ car.name }}">
+        </div>
+        <div class="car-details-info">
+            <h2>{{ car.name }}</h2>
+            <p><strong>Type:</strong> {{ car.car_type }}</p>
+            <p><strong>Seats:</strong> {{ car.seats }}</p>
+            <p class="price"><strong>Rent:</strong> ₹{{ "%.2f"|format(car.price_per_day) }} / day</p>
+            <p><strong>Availability:</strong> <span class="status-available">Available</span></p>
+            <a href="{{ url_for('book_car', car_id=car.id) }}" class="btn btn-primary">Book Now</a>
+        </div>
+    </div>
+
+    <div class="reviews-section">
+        <h3>User Reviews</h3>
+        {% for review in reviews %}
+            <div class="review-card">
+                <div class="review-author">{{ review.author }}</div>
+                <div class="review-rating">
+                    {% for i in range(review.rating) %}
+                        &#9733;
+                    {% endfor %}
+                    {% for i in range(5 - review.rating) %}
+                        &#9734;
+                    {% endfor %}
+                </div>
+                <div class="review-comment">{{ review.comment }}</div>
+            </div>
+        {% else %}
+            <p>No reviews yet for this car.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+
+mysql> CREATE DATABASE IF NOT EXISTS car_rental_db;
+Query OK, 1 row affected (0.04 sec)
+
+mysql>  USE car_rental_db;
+Database changed
+
+
+mysql>  CREATE TABLE IF NOT EXISTS 'users' (
+    ->       'id' INT AUTO_INCREMENT PRIMARY KEY,
+    ->       'name' VARCHAR(255) NOT NULL,
+    ->       'email' VARCHAR(255) NOT NULL UNIQUE,
+    ->       'password' VARCHAR(255) NOT NULL
+    ->     );
+Query OK, 0 rows affected (0.10 sec)
+
+
+
+mysql> CREATE TABLE IF NOT EXISTS 'cars' (
+    ->       'id' INT AUTO_INCREMENT PRIMARY KEY,
+    ->       'name' VARCHAR(255) NOT NULL,
+    ->       'price_per_day' DECIMAL(10, 2) NOT NULL,
+    ->       'seats' INT NOT NULL,
+    ->       'car_type' VARCHAR(50) NOT NULL,
+    ->       'image' VARCHAR(255) NOT NULL
+    ->     );
+Query OK, 0 rows affected (0.09 sec)
+
+
+
+mysql> CREATE TABLE IF NOT EXISTS 'bookings'(
+    ->       'id' INT AUTO_INCREMENT PRIMARY KEY,
+    ->       'user_id' INT NOT NULL,
+    ->       'car_id' INT NOT NULL,
+    ->       'pickup_date' DATE NOT NULL,
+    ->       'return_date' DATE NOT NULL,
+    ->       'total_price' DECIMAL(10, 2) NOT NULL,
+    ->       FOREIGN KEY ('user_id') REFERENCES 'users'('id'),
+    ->       FOREIGN KEY ('car_id') REFERENCES 'cars'('id')
+    ->     );
+Query OK, 0 rows affected (0.10 sec)
+
+
+
+mysql> INSERT INTO 'cars' ('name', 'price_per_day','seats','car_type','image') VALUES
+         ('SWIFT DZIRE AC', 3000.00, 4, 'Sedan', 'images/car1.jpg'),
+         ('TOYOTA INNOVA AC / CRYSTA', 7000.00, 7, 'SUV', 'images/car2.jpg'),
+         ('MARUTI ERTIGA AC', 7000.00, 7, 'SUV', 'images/car3.jpg');
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> use car_rental_db;
+Database changed
+mysql> INSERT INTO 'cars' ('name', 'price_per_day', 'seats', 'car_type', 'image') VALUES
+              ('Audi Q3', 9000.00, 4, 'SUV', 'images/car4.jpg'),
+              ('BMW X1 M35i', 9000.00, 5, 'SUV', 'images/car5.jpg'),
+              ('Hyundai', 4000.00, 4, 'Sadan', 'images/car6.jpg'),
+       ('Mercedes S-Class', 9000.00, 5, 'Sadan', 'images/car7.jpg'),
+       ('Range Rover', 10000.00, 7, 'SUV', 'images/car8.jpg');
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0

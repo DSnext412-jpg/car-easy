@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Cars - Car Rental{% endblock %}
+
+{% block content %}
+    <h2>Available Cars for Rent by DV cars</h2>
+    <div class="car-list">
+        {% for car in cars %}
+            <div class="car-card">
+                <img src="{{ url_for('static', filename=car.image) }}" alt="{{ car.name }}">
+                <div class="car-card-content">
+                    <h3>{{ car.name }}</h3>
+                    <p><strong>Type:</strong> {{ car.car_type }}</p>
+                    <p><strong>Seats:</strong> {{ car.seats }}</p>
+                    <p class="price">₹{{ "%.2f"|format(car.price_per_day) }} / day</p>
+                    <a href="{{ url_for('car_details', car_id=car.id) }}" class="btn">View Details</a>
+                </div>
+            </div>
+        {% else %}
+            <p>No cars available at the moment. Please check back later.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
