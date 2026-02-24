@@ -1,4 +1,4 @@
 Flask
 Flask-MySQLdb
 PyMySQL
-
+mysql.connector
