@@ -19,9 +19,7 @@
 ---
 
 # 🚀 About
-
 **Car Easy** is a modern vehicle rental platform designed to simplify the process of renting cars online.
-
 Whether you're planning a road trip, business travel, or a weekend getaway, Car Easy provides a clean, responsive, and user-friendly experience for browsing, booking, and managing rental vehicles.
 
 ---
