@@ -40,17 +40,6 @@ Whether you're planning a road trip, business travel, or a weekend getaway, Car 
 - 🛠 Easy to Customize
 
 ---
-
-# 🛠 Tech Stack
-
-| Frontend | Backend | Database |
-|----------|----------|-----------|
-| React | Node.js | MongoDB |
-| Vite | Express.js | Firebase |
-| Tailwind CSS | REST API | Supabase |
-
-> **Note:** Remove technologies that are not used in your project.
-
 ---
 
 # 📂 Project Structure
